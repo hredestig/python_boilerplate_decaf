@@ -14,8 +14,7 @@ environment:
       PYTHON_VERSION: "3.5.2"
       PYTHON_ARCH: "64"
       TOX_ENV: "py35"
-password:
-    secure: COPY PASTE FROM APPVEYORS ONLINE ENCRYPTION TOOL
+
 
 init:
   - "ECHO %PYTHON% %PYTHON_VERSION% %PYTHON_ARCH%bit"
