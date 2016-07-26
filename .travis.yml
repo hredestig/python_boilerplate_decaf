@@ -37,6 +37,7 @@ matrix:
     - os: linux
       env: 
         - TOXENV=py35
+		- MB_PYTHON_VERSION=3.5
     - os: linux
       env: 
         - TOXENV=flake8
@@ -46,11 +47,13 @@ matrix:
     - os: osx
       language: objective-c
       env:
+		- MB_PYTHON_VERSION=3.5
         - TOXENV=py35
 
 before_install:
   - source multibuild/common_utils.sh
   - source multibuild/travis_steps.sh
+  - echo ${TOXENV}
   - before_install
   
 install: pip install -U tox
