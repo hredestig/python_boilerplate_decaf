@@ -36,27 +36,21 @@ matrix:
       env: 
         - TOXENV=py35
         - MB_PYTHON_VERSION=3.5
-    - os: linux
-      env: 
-        - TOXENV=flake8
-    - os: linux
-      env: 
-        - TOXENV=codecov
     - os: osx
       language: objective-c
       env:
-        - MB_PYTHON_VERSION=3.5
         - TOXENV=py35
+        - MB_PYTHON_VERSION=3.5
 
-before_install:
+before_deploy:
   - source multibuild/common_utils.sh
   - source multibuild/travis_steps.sh
   - before_install
-  
+  - build_wheel . x86_64
+  - ls -l
+
 install:
   - pip install -U tox
-  - build_wheel . x86_64
-  - ls /io/wheelhouse
 
 language: python
 python: 3.5
