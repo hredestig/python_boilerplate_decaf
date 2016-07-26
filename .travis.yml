@@ -37,7 +37,7 @@ matrix:
     - os: linux
       env: 
         - TOXENV=py35
-		- MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_VERSION=3.5
     - os: linux
       env: 
         - TOXENV=flake8
@@ -47,7 +47,7 @@ matrix:
     - os: osx
       language: objective-c
       env:
-		- MB_PYTHON_VERSION=3.5
+        - MB_PYTHON_VERSION=3.5
         - TOXENV=py35
 
 before_install:
