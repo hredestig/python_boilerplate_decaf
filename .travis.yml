@@ -51,12 +51,12 @@ matrix:
 before_install:
   - source multibuild/common_utils.sh
   - source multibuild/travis_steps.sh
-  - echo ${TOXENV}
   - before_install
   
 install:
   - pip install -U tox
   - build_wheel . x86_64
+  - ls /io/wheelhouse
 
 language: python
 python: 3.5
