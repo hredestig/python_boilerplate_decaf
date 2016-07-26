@@ -18,6 +18,11 @@ matrix:
         - TOXENV=py35
         - MB_PYTHON_VERSION=3.5
 
+before_install:
+  - source multibuild/common_utils.sh
+  - source multibuild/travis_steps.sh
+  - before_install
+        
 install:
   - pip install -U tox
 
@@ -27,9 +32,6 @@ script:
   - tox -e ${TOXENV}
 
 before_deploy:
-  - source multibuild/common_utils.sh
-  - source multibuild/travis_steps.sh
-  - before_install
   - build_wheel . x86_64
   - ls -l ${TRAVIS_BUILD_DIR}/wheelhouse
 
@@ -52,7 +54,7 @@ deploy:
       QldWK0VGSkJFQmZwZTdYOXVhUklQYitNWTBoNlNVSWxoMFRIWC93UGhWOUJvWUlIaGlIUjl1UnM9
   provider: pypi
   true:
-    condition: $TOXENV == py27
+    condition: $TOXENV == py35
     repo: hredestig/python_boilerplate_decaf
     tags: true
 
