@@ -34,7 +34,7 @@ before_install:
 install:
   - pip install -U tox
   - pip install twine
-  - build_wheel $TRAVIS_BUILD_DIR $PLAT
+  - build_wheel . $PLAT
 
 script:
   - install_run $PLAT
