@@ -3,21 +3,17 @@
 # Test for OSX with [ -n "$IS_OSX" ]
 
 function pre_build {
-    # Any stuff that you need to do before you start building the wheels
-    # Runs in the root directory of this repository.
-
-
+	echo -e " would have done pre-build steps "
 }
 
 function build_wheel {
-    # Set default building method to pip
-    build_bdist_wheel $@
+	build_bdist_wheel $@
 }
 
 function run_tests_in_repo {
-    # Run Pillow tests from within source repo
+	echo -e " would have done test steps "
 }
 
 function run_tests {
-    # Runs tests on installed distribution from an empty directory
+	echo -e " would have done more test steps "
 }
