@@ -44,4 +44,3 @@ deploy:
   true:
     condition: $TOXENV == py35
     repo: hredestig/python_boilerplate_decaf
-    tags: true
