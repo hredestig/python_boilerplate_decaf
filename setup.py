@@ -19,7 +19,7 @@ test_requirements = [
 
 setup(
     name='python_boilerplate_decaf',
-    version='0.2.0',
+    version='0.2.1',
     description="Python Boilerplate CfB contains all the boilerplate you need to create a Python package within the DeCaF project",
     long_description=readme + '\n\n' + history,
     author="Henning Redestig",
