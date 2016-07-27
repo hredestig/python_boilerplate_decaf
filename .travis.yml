@@ -41,4 +41,4 @@ script:
 
 after_success:
   - pip install twine
-  - twine upload ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl --skip-existing -u hredestig -p $PYPIPWD
+  - twine upload ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl --skip-existing -u henred -p $PYPIPWD
