@@ -4,6 +4,10 @@ sudo: required
 dist: trusty
 services: docker
 
+env:
+  global:
+    secure: r2Wi5B2ELpx12Fea+euL1XrOa3LrE9+eNFm+FiYne49H+KorWER+AVqJuSOV6yViiHVAYYWLi5bHpCF2KTl2fxk9cFlRyocVuo2RGXK84Xj3XNNltBMyeutESRmsom1EGmTVcRs5D9XPRajPEgn6AC2HEdDg3dlFSVyvTix+wv03GhtVt+K20LuCqKsv8FwHj9PA5Tpcv1CcqIo1ekanhGkfaxAfVHxR4koA8Gs0dEC02csuhF0g4eMezMUrqH7tj80wqzcVWjcYyejVf4Vov5Fifc/upuo+bCEgbtaxVJyEDaA+D2HcWsIB5ckoA/WfRd3CBSC6zg1do1sSCP8wQaT9rPlrCxtydrSp+/8Uzfyom++yi3iPXCz1Q3gnCKMSFEro8R7di+ULSvu8OCIWxLvL6MjCV6Ti1gLBMnDTVhC5aO0DSUoAxj1U+UTDEv25v0dhXL5Md4Qy9/a1O5ekq2kj9/3NfTgcl2Y1FyVkKVbyE1SvekScU2WCd7qlm0PhRm4Ix1CKN3jTx2OpXuse7RR/r0dbpgCfTdMrEcQxoG6raWYU1xmjkfo8uO82xMniivntoyxgTwBl8PsiplkxwUGFlbhoBhc5BHdDBSAGBYiJuRkmxZ/EeOjAQPilKaXVXbDDwc9YqtgklcUbE99uByx50B9fkgJANNTD22ECuSE=
+
 matrix:
   exclude:
     - python: 3.5
@@ -33,30 +37,11 @@ script:
 
 before_deploy:
   - build_wheel . x86_64
-  - ls -l ${TRAVIS_BUILD_DIR}/wheelhouse
 
 deploy:
-  distributions: sdist bdist_wheel
-  user: hredestig
-  password:
-    secure: !!binary |
-      WmhoUHdoUSsxWlZsSi95L2MrQnhlYnpSTE1XenNSanREMXRReXBLMlhxVjdtZSs0YXo3cWcwUFd2
-      WEdpOHBab2FaOHBvZ1V4T2hMcHBrbWNQdkRpTEdOSHFyYWVISWZ1TE9yVjZzTXdPcklVcDZsSjJC
-      Q1JGMFNkQzdteHBPb0NCVlFveVB4NjBNVGEzUmZEUVZXTmVWVmNKSWNMRHBSdm8zVGRCM01OWlFS
-      ZFZVUXcyaXM4VE5vYWV1TVhuT2dlN2Y5cVRLdUF0c09SREphbzFwUzEyajM2azRKejEzd2w0eGt0
-      cFRuME9EejAyc1VMZUJGODNDNnJWTS9kT1FKQk1nYzdsTzlhT1lpb0h2MXRHUW9UaWxvaXZibnFQ
-      VTk4K2x0RFpGcjlPdzV1eFZRQm4zN2ZUVXZTa0lZRStSQ3NzZWVoVGQ5MTYrMU1ZRXl4ZGVZRCtZ
-      b3BLWXliZ3Q0T0pZN251OUw5YmVkQVo3ZDQyS3RnMlp0dG4wT0Y4bjBJOUJqdngrQ3pUcTJoRTJH
-      WlY3NUNMTGJEQWllZEhnVmxVTmRRcXVySWIzd091SmxyTnU5Zmx0R3crUGE2Q3g0cmRSdnIyVXJY
-      NTYvNkU1R2ZpQzFUNll2SUVTUE9lbjJtaFNZVytmRnFBdWVucEp5d1BmYmQvdWpFZzZXOHhRSUpU
-      UlU5WVUxSWhTS0hwVjUzRVJOV2lneWFaTEMwa1YrVmNDcGZlL0RMVHlrWFZTMksxY25GK2xoZWV5
-      T2p5dml6SEtLUVB0NzZseVEvaHMvYkhNV1lhMURMZXZuOVZOUjBVWkJzZElHWVdTUm9OTXgyOG9I
-      QldWK0VGSkJFQmZwZTdYOXVhUklQYitNWTBoNlNVSWxoMFRIWC93UGhWOUJvWUlIaGlIUjl1UnM9
-  provider: pypi
+  provider: script
+  script: deploy.sh
   true:
     condition: $TOXENV == py35
     repo: hredestig/python_boilerplate_decaf
     tags: true
-
-  
-
