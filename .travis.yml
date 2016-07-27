@@ -37,6 +37,9 @@ install:
   - build_wheel . $PLAT
 
 script:
+  - tox -e ${TOXENV}
+  - tox -e flake8
+  - tox -e codecov
   - install_run $PLAT
 
 deploy:
@@ -44,4 +47,6 @@ deploy:
   skip_cleanup: true
   script: scripts/deploy.sh
   on:
+    condition: $TOXENV == py35
     branch: master
+    tags: true
