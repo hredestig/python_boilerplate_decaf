@@ -7,7 +7,6 @@ services: docker
 env:
   global:
     - secure: "EbgNonmQOI/al9iITxgmV5CJMlXj3M0D4SEan1mDQ9brHZTpoJGh+nRWjVqjBJgt68xGAJjMXchxvQ9o4++pH7ZvFquHVgn/gUZ0PBr/ysIOnVzH53ewNdl+I3rD7zL5Uva6Up5J8FR8zpPOO4xMO8wu1DO/9bxAquTutVBFOIo6pGrdH6cob0PLue3Mn0huLHUnx77m4ymoiiXXIC9mOpgB6+zz1pU63czBD1lG1zL1lJRNUG5XRNWpG4v+NwiUo57FMgVMGTJeTNKJpAu24JHjbavsRTv02esazimSJyIJSA/vb1m0Qb5NRtmfZYODs4el2WvBY4hBPB4Y5VuewF/u+t1mKNnv0xLGp3GYqGPbP0n99uQQ/dDx9Rcy/i5ID9PqpcXgiJxtnZBIXNGBzECch6g5tg0BITaxHqsNZyKj4+CMu5/uR8xzdN4H4coBPlQRwfxswvoIGV+Q7/i4lKhhUOLQOcydWfkeXuY9fkeXKsnUh4R1jIpjht8tnsrFbyI1ARLj0nfutBAh8ex4jkrKwbHhajq76a/zxOHaNEEiOCH4+Is8kLakERsOsy8z5NVUYgMMKyvxDg0aw/FKTUiS0K5ZPSytUhbaXw+rqhTs8nFb/5hfXCAfjxD/SQ15A7DAOtyPOIGA/LZcXV3uRs1GzSD5lJSeVmVg/Njx1Qc="
-    - REPO_DIR=python_boilerplate_decaf
     - BUILD_COMMIT=0.2.0
     - PLAT=x86_64
     - UNICODE_WIDTH=32
@@ -35,8 +34,7 @@ before_install:
 install:
   - pip install -U tox
   - pip install twine
-  - clean_code $REPO_DIR $BUILD_COMMIT
-  - build_wheel $REPO_DIR $PLAT
+  - build_wheel $TRAVIS_BUILD_DIR $PLAT
 
 script:
   - install_run $PLAT
