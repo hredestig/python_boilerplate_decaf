@@ -29,6 +29,7 @@ before_install:
         
 install:
   - pip install -U tox
+  - pip install twine
 
 script:
   - tox -e flake8
@@ -37,10 +38,12 @@ script:
 
 before_deploy:
   - build_wheel . x86_64
+  - ls -l ${TRAVIS_BUILD_DIR}/wheelhouse
 
 deploy:
   provider: script
   script: deploy.sh
+  skip_cleanup: true
   true:
     condition: $TOXENV == py35
     repo: hredestig/python_boilerplate_decaf
